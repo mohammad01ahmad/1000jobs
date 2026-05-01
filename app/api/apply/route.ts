@@ -44,6 +44,9 @@ export async function POST(request: Request) {
       runDirectory,
     });
 
+    logger.info("applicant.debug", `Name: ${applicant.firstName} ${applicant.lastName}, Email: ${applicant.email}`);
+
+
     return Response.json(result, { status: result.status === "failed" ? 422 : 200 });
   } catch (error) {
     const result = buildErrorResult(runId, logger.logPath, logger.steps, error);
